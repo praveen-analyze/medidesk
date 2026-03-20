@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<p id="errorMsg" style="color:red; display:none;"></p>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medi Billing</title>
+    <link rel="stylesheet" href="appoitment.css">
+</head>
+
+<body>
+
+    <div class="header">
+
+        <div class="left">
+            <h2>Appointments</h2>
+            <p>MediDesk · City General Hospital</p>
+        </div>
+
+        <div class="right">
+
+            <div class="search-box">
+                <span>🔍</span>
+                <input type="text" placeholder="Search Appointments, doctors...">
+            </div>
+
+            <div class="bell">
+                🔔
+                <span class="dot"></span>
+            </div>
+
+            <button id="openModalBtn1" class="btn">+ New Patient</button>
+
+        </div>
+
+    </div>
+
+    <div class="top-bar">
+
+        <!-- Search -->
+        <div class="search-box">
+            <span>🔍</span>
+            <input type="text" placeholder="Search patients...">
+        </div>
+
+        <!-- Filter -->
+        <select class="filter-1">
+            <option>All Status</option>
+            <option>Cardiology</option>
+            <option>Neurology</option>
+            <option>Orthopedics</option>
+            <option>Pediatrics</option>
+        </select>
+
+        <!-- Button -->
+        <button id="openModalBtn2" class="add-btn">+ Schedule</button>
+
+    </div>
+
+    <!-- Table -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>PATIENT</th>
+                    <th>DOCTOR</th>
+                    <th>DEPARTMENT</th>
+                    <th>DATE AND TIME</th>
+                    <th>TYPE</th>
+                    <th>STATUS</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+
+            <tbody id="patientTableBody">
+                <!-- Data later JS la add pannalam -->
+            </tbody>
+        </table>
+    </div>
+
+    <div id="modal-1" class="modal">
+        <div class="modal-box">
+
+            <!-- Header -->
+            <div class="modal-header">
+                <h2>Appointments</h2>
+                <span onclick="closeModal()" class="modal-box-x">✕</span>
+            </div>
+
+            <!-- Form -->
+            <div class="form-grid">
+
+                <div>
+                    <label>Patients Name</label>
+                    <input type="text" id="firstName" placeholder="First Name">
+                </div>
+
+                <div>
+                    <label> DOCTOR</label>
+                    <select id="doctor">
+                        <option value="Dr. Priya Mehta">Dr. Priya Mehta</option>
+                        <option value="Dr. ROY">Dr. ROY</option>
+                        <option value="Dr. ramiya">Dr. ramiya</option>
+                        <option value="Dr. Shalini">Dr. Shalini</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label>DEPARTMENT</label>
+                    <select id="department">
+                        <option value="Cardiology">Cardiology</option>
+                        <option value="Neurology">Neurology</option>
+                        <option value="Orthopedics">Orthopedics</option>
+                        <option value="Pediatrics">Pediatrics</option>
+                    </select>
+                </div>
+                <div>
+                    <label>TYPE</label>
+                    <select id="type">
+                        <option value="Out-patients">Out-patients</option>
+                        <option value="Follow-Up">Follow-Up</option>
+                        <option value="Emergency">Emergency</option>
+                        <option value="Check-up">Check-up</option>
+                    </select>
+                </div>
+                <div>
+                    <label>STATUS</label>
+                    <select id="status">
+                        <option value="Completed">Completed</option>
+                        <option value="Waiting">Waiting</option>
+                        <option value="In-Progress">In-Progress</option>
+                        <option value="Confirmed">Confirmed</option>
+                    </select>
+                </div>
+            
+            </div>
+
+            <!-- Footer -->
+            <div class="modal-footer">
+                <button class="cancel" onclick="closeModal()">Cancel</button>
+                <button class="submit" onclick="addpatients()">Add Schedule</button>
+            </div>
+
+        </div>
+    </div>
+
+<script src="appointment.js"></script>
+
+</body>
+
+</html>
