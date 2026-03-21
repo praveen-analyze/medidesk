@@ -1,3 +1,17 @@
+const sideNav = document.getElementById("sideNav");
+const menuBar = document.getElementById("menubar");
+const closeNav = document.getElementById("closeNav");
+
+// Sidebar open
+menuBar.addEventListener("click", () => {
+  sideNav.style.left = "0";
+});
+
+// Sidebar close
+closeNav.addEventListener("click", () => {
+  sideNav.style.left = "-40%";
+});
+
 // ================= SAMPLE DATA =================
 const billingData = [
   {
