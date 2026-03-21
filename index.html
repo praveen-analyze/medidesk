@@ -132,29 +132,28 @@ https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
     <h2 class="text-xl font-semibold mb-6">Register New Patient</h2>
 
     <!-- Form -->
-    <form class="grid grid-cols-2 gap-4">
-
+    <form class="grid grid-cols-2 gap-4" onsubmit="return false;">
       <div>
         <label class="text-sm text-gray-600">FIRST NAME</label>
-        <input type="text" value="Ravi"
+        <input id="firstName" type="text" placeholder="Ravi"
           class="w-full mt-1 p-2 border outline-none  rounded-lg focus:ring-2 focus:ring-blue-400">
       </div>
 
       <div>
         <label class="text-sm text-gray-600">LAST NAME</label>
-        <input type="text" value="Kumar"
+        <input id="lastName" type="text" placeholder="Kumar"
           class="w-full mt-1 p-2 border outline-none rounded-lg focus:ring-2 focus:ring-blue-400">
       </div>
 
       <div>
         <label class="text-sm text-gray-600">AGE</label>
-        <input type="number" value="32"
+        <input id="age" type="number" placeholder="21"
           class="w-full mt-1 p-2 border outline-none  rounded-lg focus:ring-2 focus:ring-blue-400">
       </div>
 
       <div>
         <label class="text-sm text-gray-600">GENDER</label>
-        <select class="w-full mt-1 p-2 outline-none  border rounded-lg focus:ring-2 focus:ring-blue-400">
+        <select id="gender" class="w-full mt-1 p-2 outline-none  border rounded-lg focus:ring-2 focus:ring-blue-400">
           <option>Male</option>
           <option>Female</option>
         </select>
@@ -162,13 +161,13 @@ https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
 
       <div>
         <label class="text-sm text-gray-600">PHONE</label>
-        <input type="text" value="+91 98765 43210"
+        <input id="phone" type="text" placeholder="+91 98765 43210"
           class="w-full mt-1 p-2 border outline-none  rounded-lg focus:ring-2 focus:ring-blue-400">
       </div>
 
       <div>
         <label class="text-sm text-gray-600">BLOOD GROUP</label>
-        <select class="w-full mt-1 p-2 outline-none  border rounded-lg focus:ring-2 focus:ring-blue-400">
+        <select  id="blood" class="w-full mt-1 p-2 outline-none  border rounded-lg focus:ring-2 focus:ring-blue-400">
           <option>A+</option>
           <option>B+</option>
           <option>O+</option>
@@ -177,13 +176,13 @@ https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
 
       <div class="col-span-2">
         <label class="text-sm text-gray-600">CONDITION</label>
-        <input type="text"
+        <input id="condition" type="text" placeholder="Fever"
           class="w-full mt-1 p-2 border outline-none rounded-lg focus:ring-2 focus:ring-blue-400">
       </div>
     
         <div>
         <label class="text-sm text-gray-600">Assigned Doctor</label>
-        <select class="w-full mt-1 p-2 outline-none  border rounded-lg focus:ring-2 focus:ring-blue-400">
+        <select id="doctor" class="w-full mt-1 p-2 outline-none  border rounded-lg focus:ring-2 focus:ring-blue-400">
           <option>Dr.Priyanka</option>
           <option>Dr.Suresh Kumar</option>
           <option>Dr.Arulmani</option>
@@ -192,10 +191,9 @@ https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
       </div>
       <div>
         <label class="text-sm text-gray-600">WARD</label>
-        <select class="w-full mt-1 p-2 outline-none  border rounded-lg focus:ring-2 focus:ring-blue-400">
+        <select  id="ward" class="w-full mt-1 p-2 outline-none  border rounded-lg focus:ring-2 focus:ring-blue-400">
           <option>General</option>
           <option>ICU</option>
-          <option>Periatic</option>
           <option>Pediatric</option>
           <option>Maternity</option>
         </select>
@@ -205,18 +203,88 @@ https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
     </form>
 
     <!-- Buttons -->
-    <div class="flex justify-end mt-6 gap-3">
-      <button class="px-4 py-2 text-gray-600">Cancel</button>
-      <button class="px-5 py-2 bg-blue-600 text-white rounded-lg">
-        Register Patient
-      </button>
-    </div>
+     <div class="flex justify-around p-2 mt-2">
+  <button id="cancelBtn" type="button" class="px-4 py-2 text-gray-600">Cancel</button>
 
+<button id="registerBtn" type="button"
+  class="px-5 py-2 bg-blue-600 text-white rounded-lg">
+  Register Patient
+</button>
+
+</div>
   </div>
 </section>
-</body>
-<script src="script.js">
+<!-- RECENT PATIENTS + SCHEDULE -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-5 px-5 pb-5">
 
-  
-</script>
+  <!-- RECENT PATIENTS (BIG) -->
+  <div class="bg-white lg:col-span-2 rounded-2xl shadow overflow-hidden">
+
+    <div class="px-5 py-4 border-b flex justify-between">
+      <h3 class="font-semibold">Recent Patients</h3>
+      
+      <a href="patients.html"
+  class="text-sm border border-gray-200 rounded-xl p-1 hover:text-blue-500 hover:border-blue-500">
+  View all
+</a>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm">
+        <thead class="bg-gray-50 text-gray-400 text-xs uppercase">
+          <tr>
+            <th class="px-5 py-3 text-left">Patient</th>
+            <th class="px-3 py-3 text-left">Age</th>
+            <th class="px-3 py-3 text-left">Condition</th>
+            <th class="px-3 py-3 text-left">Status</th>
+            <th class="px-3 py-3 text-left">Doctor</th>
+           <th class="px-3 py-3 text-left">Action</th>
+
+          </tr>
+        </thead>
+
+        <tbody id="recentPatientsBody"></tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SCHEDULE (SMALL) -->
+  <div class="bg-white lg:col-span-1 rounded-2xl shadow overflow-hidden h-80">
+
+    <div class="px-5 py-4 border-b flex justify-between">
+      <h3 class="font-semibold">Today's Schedule</h3>
+    </div>
+
+    <div id="scheduleList" class="px-5 py-3 overflow-y-auto h-full"></div>
+
+  </div>
+
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5 pb-5">
+  <div class="bg-white rounded-2xl shadow overflow-hidden">
+    <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
+      <div><h3 class="font-semibold text-gray-800">Weekly Admissions</h3><p class="text-xs text-gray-400 mt-0.5">March 10 – 16</p></div>
+      <span class="text-xs px-2.5 py-1 rounded-full bg-green-50 text-green-600">↑ 12%</span>
+    </div>
+    <div class="px-5 py-5"><div id="weeklyChart" class="flex items-end gap-2" style="height:140px"></div></div>
+  </div>
+  <div class="bg-white rounded-2xl shadow overflow-hidden">
+    <div class="px-5 py-4 border-b border-gray-100"><h3 class="font-semibold text-gray-800">Department Load</h3><p class="text-xs text-gray-400 mt-0.5">From doctors database</p></div>
+    <div id="deptBars" class="px-5 py-4 flex flex-col gap-4"></div>
+  </div>
+  <div class="bg-white rounded-2xl shadow overflow-hidden">
+    <div class="px-5 py-4 border-b border-gray-100"><h3 class="font-semibold text-gray-800">Quick Actions</h3></div>
+    <div class="p-4 grid grid-cols-2 gap-2">
+      <div onclick="openModal()" class="flex items-center gap-2 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50 cursor-pointer transition hover:-translate-y-0.5"><span class="text-xl">➕</span><div><p class="text-sm font-medium">Add Patient</p></div></div>
+      <a href="appointments.html" class="flex items-center gap-2 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50 cursor-pointer transition hover:-translate-y-0.5"><span class="text-xl">📅</span><div><p class="text-sm font-medium">Appointments</p></div></a>
+      <a href="doctors.html" class="flex items-center gap-2 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50 cursor-pointer transition hover:-translate-y-0.5"><span class="text-xl">🩺</span><div><p class="text-sm font-medium">Doctors</p></div></a>
+      <a href="billing.html" class="flex items-center gap-2 p-3 rounded-xl border border-gray-100 bg-gray-50 hover:border-blue-200 hover:bg-blue-50 cursor-pointer transition hover:-translate-y-0.5"><span class="text-xl">💳</span><div><p class="text-sm font-medium">Billing</p></div></a>
+    </div>
+  </div>
+</div>
+
+<script src="index.js"></script>
+
+</body>
 </html>
