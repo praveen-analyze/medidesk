@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing</title>
+      <link href="
+https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
+" rel="stylesheet">
+</head>
+<body>
+     <!--SideNavbar-->
+
+  <section id="sideNav" class="text-white fixed top-0 transition-all duration-1000 z-20"
+         style="background-color:#0F1C2E;width: 40%;height: 100vh; left: -40%;">
+    <div class="relative cursor-pointer">
+      <svg id="closeNav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6 text-white absolute right-1 top-1">
+  <path fill-rule="evenodd" d="M5.47 5.47a.75.75 0 0 1 1.06 0L12 10.94l5.47-5.47a.75.75 0 1 1 1.06 1.06L13.06 12l5.47 5.47a.75.75 0 1 1-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 0 1-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 0 1 0-1.06Z" clip-rule="evenodd" />
+</svg>
+
+      
+    </div>
+    <div class="p-5 shadow" style="font-size: 14px; border-bottom: 1px solid rgba(128, 128, 128, 0.178);">
+      <h1 class="font-bold text-2xl">MediDesk</h1>
+      <p class="text-gray-400 mt-1">CITY GENERAL HOSPITAL</p>
+    </div>
+    <div class="p-3 text-gray-400">
+      <p style="font-size: 14px;">MAIN</p>
+      <ul>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+        <a href="index.html"><span class="p-1">🏠</span>Dashboard</a>
+        </li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="patients.html"><span class="p-1 ">👥</span>Patients</a>
+        </li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="Appointments.html"><span class="p-1">📅</span>Appointments</a>
+        </li>
+      </ul>
+      <p class="P-3 mt-2" style="font-size: 14px;">HOSPITAL</p>
+      <ul>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="Doctors.html"><span class="p-1">🩺</span>Doctors</a>
+        </li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="beds.html"><span class="p-1">🏥</span>Wards & Beds</a>
+        </li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="Billing.html"><span class="p-1">💳</span>Billing</a>
+        </li>
+      </ul>
+ 
+    </div>
+  </section>
+  <!--Navbar-->
+
+  <section class="flex justify-between p-2 shadow items-center bg-white" style="font-size: 14px;">
+      <div class="lg:hidden cursor-pointer">
+    <svg id="menubar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
+  <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+</svg>
+
+  </div>
+    <div>
+      <h1 class="font-bold text-2xl">Dashboard</h1>
+      <p class="text-gray-400">MediDesk · City General Hospital</p>
+
+    </div>
+    
+    <div class="flex relative gap-5">
+      <span class="absolute p-1  hidden md:block">🔍</span>
+      <input class="bg-gray-100 outline-none rounded text-center w-40 p-1  hidden md:block " placeholder="Search patients,doctors... " type="text" style="width: 250px;">
+      <span class="p-1 bg-gray-100 rounded border hover:border-blue-500 hover:bg-white cursor-pointer">
+  🔔
+</span>
+      <button id="addPatient" class="bg-blue-600 rounded p-1 text-white"><span>✚</span>New Patient</button>
+    </div>
+<div class="hidden lg:flex items-center gap-6 text-sm">
+
+  <ul class="flex gap-4">
+  <li>
+    <a href="index.html" class="cursor-pointer hover:underline">🏠 Dashboard</a>
+  </li>
+  <li>
+    <a href="patients.html" class="cursor-pointer hover:underline">👥 Patients</a>
+  </li>
+  <li>
+    <a href="appointments.html" class="cursor-pointer hover:underline">📅 Appointments</a>
+  </li>
+</ul>
+
+  <ul class="flex gap-4">
+    <li>
+      <a href="Doctors.html" class="cursor-pointer hover:underline">🩺 Doctors</a>
+
+      </li>
+    <li>
+      <a href="beds.html" class="cursor-pointer hover:underline">🏥 Wards & Beds</a>
+    </li>
+    <li>
+    <a href="Billing.html"class="cursor-pointer hover:underline">💳 Billing</a>
+
+    </li>
+  </ul>
+
+</div>
+
+
+  </section>
+<div class="grid md:grid-cols-3 gap-5 p-5 mb-6">
+  
+  <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl">
+    <p class="text-gray-500 text-sm">Total Revenue (March)</p>
+    <h1 id="totalRevenue" class="text-3xl font-bold mt-2 text-green-600">₹0</h1>
+  </div>
+
+  <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl">
+    <p class="text-gray-500 text-sm">Pending Invoices</p>
+    <h1 id="pendingRevenue" class="text-3xl font-bold text-red-500 mt-2 text-orange-300 ">₹0</h1>
+  </div>
+
+  <div class="bg-white p-6 rounded-2xl shadow hover:shadow-xl">
+    <p class="text-gray-500 text-sm">Overdue</p>
+    <h1 id="overdueRevenue" class="text-3xl font-bold text-red-700 mt-2">₹0</h1>
+  </div>
+
+</div>
+
+<div class="p-5">
+  <div class="bg-white rounded-2xl shadow overflow-hidden">
+    
+    <div class="px-5 py-4 border-b border-gray-100">
+      <h3 class="font-semibold text-gray-800">Invoice Records</h3>
+    </div>
+
+    <div class="overflow-x-auto">
+      <table class="w-full text-sm min-w-max">
+        
+        <thead class="bg-gray-50 text-gray-400 text-xs uppercase">
+          <tr>
+            <th class="px-5  py-3 text-left">Invoice ID</th>
+            <th class="px-3 py-3 text-left">Patient</th>
+            <th class="px-3 py-3 text-left">Date</th>
+            <th class="px-3 py-3 text-left">Services</th>
+            <th class="px-3 py-3 text-left">Amount</th>
+            <th class="px-3 py-3 text-left">Status</th>
+          </tr>
+        </thead>
+
+        <tbody id="billingTableBody" class="divide-y"></tbody>
+
+      </table>
+    </div>
+
+  </div>
+</div>
+    <script src="billing.js"></script>
+</body>
+</html>
