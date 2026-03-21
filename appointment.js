@@ -1,7 +1,19 @@
+const sideNav = document.getElementById("sideNav");
+const menuBar = document.getElementById("menubar");
+const closeNav = document.getElementById("closeNav");
+
+// Sidebar open
+menuBar.addEventListener("click", () => {
+  sideNav.style.left = "0";
+});
+
+// Sidebar close
+closeNav.addEventListener("click", () => {
+  sideNav.style.left = "-40%";
+});
+
 // Modal
 const modal = document.getElementById("modal-1");
-
-
 const btn1 = document.getElementById("openModalBtn1");
 const btn2 = document.getElementById("openModalBtn2");
 
@@ -54,7 +66,7 @@ function addpatients() {
 
   table.appendChild(row);
 
-  saveToLocalStorage(); // ✅ IMPORTANT
+  saveToLocalStorage();
 
   closeModal();
 }
@@ -122,3 +134,41 @@ function loadFromLocalStorage() {
 }
 
 window.onload = loadFromLocalStorage;
+
+// SEARCH + FILTER
+
+const searchInput = document.getElementById("searchInput");
+const filterDepartment = document.getElementById("filterDepartment");
+
+searchInput.addEventListener("keyup", filterTable);
+
+
+filterDepartment.addEventListener("change", filterTable);
+
+function filterTable() {
+
+  const searchValue = searchInput.value.toLowerCase();
+  const filterValue = filterDepartment.value.toLowerCase();
+
+  const rows = document.querySelectorAll("#patientTableBody tr");
+
+  rows.forEach(row => {
+    const name = row.children[0].innerText.toLowerCase();
+    const doctor = row.children[1].innerText.toLowerCase();
+    const department = row.children[2].innerText.toLowerCase();
+
+    const matchSearch =
+      name.includes(searchValue) ||
+      doctor.includes(searchValue);
+
+    const matchFilter =
+      filterValue === "all status" ||
+      department.includes(filterValue);
+
+    if (matchSearch && matchFilter) {
+      row.style.display = "";
+    } else {
+      row.style.display = "none";
+    }
+  });
+}

@@ -1,4 +1,17 @@
 
+const sideNav = document.getElementById("sideNav");
+const menuBar = document.getElementById("menubar");
+const closeNav = document.getElementById("closeNav");
+
+// Sidebar open
+menuBar.addEventListener("click", () => {
+  sideNav.style.left = "0";
+});
+
+// Sidebar close
+closeNav.addEventListener("click", () => {
+  sideNav.style.left = "-40%";
+});
 const modal = document.getElementById("modal");
 
 const btn1 = document.getElementById("openModalBtn1");
@@ -33,17 +46,17 @@ function addpatients() {
     return;
   }
 
-//   
-const table = document.getElementById("patientTableBody");
+  //   
+  const table = document.getElementById("patientTableBody");
   const newRow = document.createElement("tr");
 
-  // 🔥 Ward class
+  // Ward class
   let wardClass = "ward-general";
   if (ward === "ICU") wardClass = "ward-icu";
   if (ward === "SCAN") wardClass = "ward-scan";
   if (ward === "Discharge") wardClass = "ward-discharge";
 
-  // 🔥 Status logic
+  //  Status logic
   let status = "Admitted";
   let statusClass = "status-admitted";
 
@@ -82,14 +95,14 @@ const table = document.getElementById("patientTableBody");
   closeModal();
 }
 
-// 🔥 DELETE
+//  DELETE
 function deletePatient(btn) {
   const row = btn.parentElement.parentElement;
   row.remove();
   saveToLocalStorage();
 }
 
-// 🔥 SAVE
+//  SAVE
 function saveToLocalStorage() {
   const rows = document.querySelectorAll("#patientTableBody tr");
 
@@ -112,7 +125,7 @@ function saveToLocalStorage() {
   localStorage.setItem("patients", JSON.stringify(data));
 }
 
-// 🔥 LOAD
+//  LOAD
 function loadFromLocalStorage() {
   const data = JSON.parse(localStorage.getItem("patients")) || [];
 
@@ -122,7 +135,7 @@ function loadFromLocalStorage() {
   data.forEach(p => {
     const row = document.createElement("tr");
 
-    // 🔥 Detect class again
+    //  Detect class again
     let wardClass = "ward-general";
     if (p.ward.includes("ICU")) wardClass = "ward-icu";
     if (p.ward.includes("SCAN")) wardClass = "ward-scan";
@@ -150,3 +163,55 @@ function loadFromLocalStorage() {
 }
 
 window.onload = loadFromLocalStorage;
+
+//  SEARCH + FILTER 
+
+const searchInput = document.getElementById("searchInput");
+const statusFilter = document.getElementById("statusFilter");
+
+// Run on typing
+searchInput.addEventListener("keyup", filterTable);
+
+// Run on dropdown change
+statusFilter.addEventListener("change", filterTable);
+
+function filterTable() {
+
+  const searchValue = searchInput.value.toLowerCase().trim();
+  const filterValue = statusFilter.value.toLowerCase();
+
+  const rows = document.querySelectorAll("#patientTableBody tr");
+
+  let visibleCount = 0;
+
+  rows.forEach(row => {
+
+    const name = row.children[0].innerText.toLowerCase();
+    const condition = row.children[3].innerText.toLowerCase();
+    const ward = row.children[4].innerText.toLowerCase();
+    const status = row.children[5].innerText.toLowerCase();
+
+    // 🔍 Search match
+    const matchSearch =
+      name.includes(searchValue) ||
+      condition.includes(searchValue);
+
+    // 🎯 Filter match
+    const matchFilter =
+      filterValue === "all status" ||
+      status.includes(filterValue);
+
+    if (matchSearch && matchFilter) {
+      row.style.display = "";
+      visibleCount++;
+    } else {
+      row.style.display = "none";
+    }
+  });
+
+  // Optional: No data message
+  const noData = document.getElementById("noData");
+  if (noData) {
+    noData.style.display = visibleCount === 0 ? "block" : "none";
+  }
+}

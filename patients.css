@@ -288,3 +288,80 @@ input:focus, select:focus{
 .status-admitted { background:#dbeafe; color:#2563eb; }
 .status-discharged { background:#d1fae5; color:#059669; }
 .status-critical { background:#fee2e2; color:#dc2626; }
+
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+  /* Header */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .right {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  /* Search */
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  /* Top bar */
+  .top-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter {
+    width: 100%;
+  }
+
+  .add-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Table */
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 900px; /* keeps layout same, adds scroll */
+  }
+
+  /* Modal */
+  .modal-box {
+    width: 90%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .form-grid .full {
+    grid-column: span 1;
+  }
+
+  /* Footer buttons */
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .cancel,
+  .submit {
+    width: 100%;
+  }
+}

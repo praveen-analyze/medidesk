@@ -27,22 +27,34 @@ https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
     <div class="p-3 text-gray-400">
       <p style="font-size: 14px;">MAIN</p>
       <ul>
-        <li class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500" ><span class="p-1">🏠</span>Dashboard</li>
-        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500"><span class="p-1 ">👥</span>Patients</li>
-        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500"><span class="p-1">📅</span>Appointments</li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+        <a href="index.html"><span class="p-1">🏠</span>Dashboard</a>
+        </li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="patients.html"><span class="p-1 ">👥</span>Patients</a>
+        </li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="Appointments.html"><span class="p-1">📅</span>Appointments</a>
+        </li>
       </ul>
       <p class="P-3 mt-2" style="font-size: 14px;">HOSPITAL</p>
       <ul>
-        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500"><span class="p-1">🩺</span>Doctors</li>
-        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500"><span class="p-1">🏥</span>Wards & Beds</li>
-        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500"><span class="p-1">💳</span>Billing</li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="Doctors.html"><span class="p-1">🩺</span>Doctors</a>
+        </li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="beds.html"><span class="p-1">🏥</span>Wards & Beds</a>
+        </li>
+        <li  class="p-2 cursor-pointer hover:text-white rounded hover:bg-blue-900 transition-all duration-500">
+          <a href="Billing.html"><span class="p-1">💳</span>Billing</a>
+        </li>
       </ul>
  
     </div>
   </section>
   <!--Navbar-->
 
-  <section class="flex justify-between p-2 shadow items-center" style="font-size: 14px;">
+  <section class="flex justify-between p-2 shadow items-center bg-white" style="font-size: 14px;">
       <div class="lg:hidden cursor-pointer">
     <svg id="menubar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-8 h-8">
   <path fill-rule="evenodd" d="M3 6.75A.75.75 0 0 1 3.75 6h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 6.75ZM3 12a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75A.75.75 0 0 1 3 12Zm0 5.25a.75.75 0 0 1 .75-.75h16.5a.75.75 0 0 1 0 1.5H3.75a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
@@ -66,15 +78,29 @@ https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
 <div class="hidden lg:flex items-center gap-6 text-sm">
 
   <ul class="flex gap-4">
-    <li class="cursor-pointer hover:underline">🏠 Dashboard</li>
-    <li class="cursor-pointer hover:underline">👥 Patients</li>
-    <li class="cursor-pointer hover:underline">📅 Appointments</li>
-  </ul>
+  <li>
+    <a href="index.html" class="cursor-pointer hover:underline">🏠 Dashboard</a>
+  </li>
+  <li>
+    <a href="patients.html" class="cursor-pointer hover:underline">👥 Patients</a>
+  </li>
+  <li>
+    <a href="appointments.html" class="cursor-pointer hover:underline">📅 Appointments</a>
+  </li>
+</ul>
 
   <ul class="flex gap-4">
-    <li class="cursor-pointer hover:underline">🩺 Doctors</li>
-    <li class="cursor-pointer hover:underline">🏥 Wards & Beds</li>
-    <li class="cursor-pointer hover:underline">💳 Billing</li>
+    <li>
+      <a href="Doctors.html" class="cursor-pointer hover:underline">🩺 Doctors</a>
+
+      </li>
+    <li>
+      <a href="beds.html" class="cursor-pointer hover:underline">🏥 Wards & Beds</a>
+    </li>
+    <li>
+    <a href="Billing.html"class="cursor-pointer hover:underline">💳 Billing</a>
+
+    </li>
   </ul>
 
 </div>
@@ -86,28 +112,28 @@ https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
   <div class="bg-white p-5 rounded-2xl hover:shadow-xl shadow relative">
     <span class="absolute top-3 right-3 bg-gray-100 p-1 text-xl rounded ">👥</span>
     <p class="text-gray-500 text-sm">TOTAL PATIENTS</p>
-    <p class="text-2xl font-bold mt-2">248</p>
+    <p id="totalPatients" class="text-2xl font-bold mt-2">248</p>
     <p class="text-green-700 text-sm">↑ 12 this week</p>
   </div>
 
   <div class="bg-white p-5 rounded-2xl hover:shadow-xl shadow relative">
     <span class="absolute top-3 right-3 bg-gray-100 p-1 rounded text-xl">📅</span>
     <p class="text-gray-500 text-sm">TODAY APPOINTMENTS</p>
-    <p class="text-2xl font-bold mt-2">34</p>
+    <p id="totalAppointments" class="text-2xl font-bold mt-2">34</p>
     <p class="text-green-700 text-sm">↑ 4 more than yesterday</p>
   </div>
 
   <div class="bg-white p-5 rounded-2xl hover:shadow-xl shadow relative">
     <span class="absolute top-3 right-3 bg-gray-100 p-1 text-xl rounded ">🏥</span>
     <p class="text-gray-500 text-sm">BEDS OCCUPIED</p>
-    <p class="text-2xl font-bold mt-2">67/80</p>
+    <p id="bedCount" class="text-2xl font-bold mt-2">67/80</p>
     <p class="text-red-600 text-sm">↑ 84% occupancy</p>
   </div>
 
   <div class="bg-white p-5 rounded-2xl hover:shadow-xl shadow relative">
     <span class="absolute top-3 right-3 bg-gray-100 p-1 text-xl rounded">💰</span>
     <p class="text-gray-500 text-sm">REVENUE TODAY</p>
-    <p class="text-2xl font-bold mt-2">₹1.4L</p>
+    <p id="revenueCount" class="text-2xl font-bold mt-2">₹1.4L</p>
     <p class="text-green-700 text-sm">↑ 8% vs last week</p>
   </div>
 
@@ -261,14 +287,9 @@ https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css
 
 </div>
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 px-5 pb-5">
-  <div class="bg-white rounded-2xl shadow overflow-hidden">
-    <div class="px-5 py-4 border-b border-gray-100 flex items-center justify-between">
-      <div><h3 class="font-semibold text-gray-800">Weekly Admissions</h3><p class="text-xs text-gray-400 mt-0.5">March 10 – 16</p></div>
-      <span class="text-xs px-2.5 py-1 rounded-full bg-green-50 text-green-600">↑ 12%</span>
-    </div>
-    <div class="px-5 py-5"><div id="weeklyChart" class="flex items-end gap-2" style="height:140px"></div></div>
-  </div>
+<div class="grid grid-cols-1 md:grid-cols-2  gap-5 px-5 pb-5">
+ 
+   
   <div class="bg-white rounded-2xl shadow overflow-hidden">
     <div class="px-5 py-4 border-b border-gray-100"><h3 class="font-semibold text-gray-800">Department Load</h3><p class="text-xs text-gray-400 mt-0.5">From doctors database</p></div>
     <div id="deptBars" class="px-5 py-4 flex flex-col gap-4"></div>

@@ -37,7 +37,7 @@ body{
 .search-box{
   display:flex;
   align-items:center;
-  background:#f1f3f7;
+  background-color: white;
   padding:8px 12px;
   border-radius:20px;
 }
@@ -297,4 +297,79 @@ input:focus, select:focus{
 .orange {
   background: #fef3c7;
   color: #d97706;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+
+  /* Header */
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .right {
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  /* Search box */
+  .search-box {
+    width: 100%;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  /* Top bar */
+  .top-bar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-1 {
+    width: 100%;
+  }
+
+  .add-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* Table */
+  .table-container {
+    overflow-x: auto;
+  }
+
+  table {
+    min-width: 700px; /* keeps layout same but scrollable */
+  }
+
+  /* Modal */
+  .modal-box {
+    width: 90%;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr; /* single column */
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .form-grid .full {
+    grid-column: span 1;
+  }
+
+  /* Buttons */
+  .modal-footer {
+    flex-direction: column;
+  }
+
+  .cancel, .submit {
+    width: 100%;
+  }
 }
