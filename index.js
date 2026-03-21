@@ -1,40 +1,43 @@
-// ================= SIDEBAR =================
 const sideNav = document.getElementById("sideNav");
 const menuBar = document.getElementById("menubar");
 const closeNav = document.getElementById("closeNav");
 
-menuBar?.addEventListener("click", () => {
+// Sidebar open
+menuBar.addEventListener("click", () => {
   sideNav.style.left = "0";
 });
 
-closeNav?.addEventListener("click", () => {
+// Sidebar close
+closeNav.addEventListener("click", () => {
   sideNav.style.left = "-40%";
 });
 
-// ================= FORM =================
 const formContainer = document.getElementById("formContainer");
 const closeForm = document.getElementById("closeForm");
 const addPatient = document.getElementById("addPatient");
-const quickAdd = document.getElementById("quickAddPatient");
 
-addPatient?.addEventListener("click", () => {
+// Open form
+addPatient.addEventListener("click", () => {
   formContainer.style.display = "flex";
 });
 
-quickAdd?.addEventListener("click", () => {
-  formContainer.style.display = "flex";
-});
-
-closeForm?.addEventListener("click", () => {
+// Close form
+closeForm.addEventListener("click", () => {
   formContainer.style.display = "none";
 });
 
-// ================= LOAD PATIENTS =================
+const quickAdd = document.getElementById("quickAddPatient");
+
+quickAdd.addEventListener("click", () => {
+  formContainer.style.display = "flex";
+});
+
+
+// LOAD PATIENTS TABLE
+
 function loadPatientsToDashboard() {
   const data = JSON.parse(localStorage.getItem("patients")) || [];
   const table = document.getElementById("recentPatientsBody");
-
-  if (!table) return;
 
   table.innerHTML = "";
 
@@ -54,7 +57,7 @@ function loadPatientsToDashboard() {
     const row = document.createElement("tr");
 
     row.innerHTML = `
-      <td class="px-5 py-3">${p.name}</td>
+      <td class="px-5 py-3 ">${p.name}</td>
       <td class="px-3 py-3">${p.ageGender}</td>
       <td class="px-3 py-3">${p.condition}</td>
       <td class="px-3 py-3 ${statusClass}">${status}</td>
@@ -68,12 +71,12 @@ function loadPatientsToDashboard() {
   });
 }
 
-// ================= LOAD APPOINTMENTS =================
+
+// LOAD TODAY SCHEDULE
+
 function loadAppointmentsToDashboard() {
   const data = JSON.parse(localStorage.getItem("appointments")) || [];
   const container = document.getElementById("scheduleList");
-
-  if (!container) return;
 
   container.innerHTML = "";
 
@@ -87,6 +90,7 @@ function loadAppointmentsToDashboard() {
         <p class="font-semibold text-sm">${a.name}</p>
         <p class="text-xs text-gray-500">${a.doctor}</p>
       </div>
+
       <div class="text-right">
         <p class="text-xs text-gray-400">${a.date}</p>
         <span class="text-xs px-2 py-1 bg-blue-100 text-blue-600 rounded">
@@ -99,35 +103,49 @@ function loadAppointmentsToDashboard() {
   });
 }
 
-// ================= DASHBOARD STATS =================
+
+// DASHBOARD Cards
+
 function updateDashboardStats() {
   const patients = JSON.parse(localStorage.getItem("patients")) || [];
   const appointments = JSON.parse(localStorage.getItem("appointments")) || [];
 
-  const patientEl = document.getElementById("totalPatients");
-  const appointEl = document.getElementById("totalAppointments");
-  const bedEl = document.getElementById("bedCount");
-
-  if (patientEl) patientEl.innerText = patients.length;
-  if (appointEl) appointEl.innerText = appointments.length;
+  document.getElementById("totalPatients").innerText = patients.length;
+  document.getElementById("totalAppointments").innerText = appointments.length;
 
   let admitted = 0;
   let critical = 0;
+  let discharged = 0;
 
   patients.forEach(p => {
     if (p.status?.includes("Admitted")) admitted++;
     else if (p.status?.includes("Critical")) critical++;
+    else if (p.status?.includes("Discharged")) discharged++;
   });
 
-  if (bedEl) bedEl.innerText = `${admitted + critical}/80`;
+
+document.getElementById("bedCount").innerText =
+  `${admitted + critical}/80`;
 }
 
-// ================= DEPARTMENT LOAD =================
+
+//DEPT STATUS
+function getDepartment(doctorName) {
+  if (!doctorName) return "General";
+
+  if (doctorName.includes("Priya")) return "General Surgery";
+  if (doctorName.includes("Arjun")) return "Orthopedics";
+  if (doctorName.includes("Kavitha")) return "Pediatrics";
+  if (doctorName.includes("Suresh")) return "Cardiology";
+  if (doctorName.includes("Meena")) return "General Medicine";
+  if (doctorName.includes("Rajan")) return "Neurology";
+
+  return "General";
+}
+
 function loadDepartmentLoad() {
   const patients = JSON.parse(localStorage.getItem("patients")) || [];
   const container = document.getElementById("deptBars");
-
-  if (!container) return;
 
   container.innerHTML = "";
 
@@ -139,7 +157,7 @@ function loadDepartmentLoad() {
   let deptCount = {};
 
   patients.forEach(p => {
-    const dept = p.ward || "General";
+    const dept = p.ward || "General"; 
     deptCount[dept] = (deptCount[dept] || 0) + 1;
   });
 
@@ -165,10 +183,10 @@ function loadDepartmentLoad() {
   }
 }
 
-// ================= INIT =================
 window.onload = function () {
   loadPatientsToDashboard();
   loadAppointmentsToDashboard();
   updateDashboardStats();
   loadDepartmentLoad();
-  
+  updateRevenueToday();
+};
