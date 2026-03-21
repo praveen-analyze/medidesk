@@ -26,6 +26,12 @@ closeForm.addEventListener("click", () => {
   formContainer.style.display = "none";
 });
 
+const quickAdd = document.getElementById("quickAddPatient");
+
+quickAdd.addEventListener("click", () => {
+  formContainer.style.display = "flex";
+});
+
 
 // LOAD PATIENTS TABLE
 
@@ -51,7 +57,7 @@ function loadPatientsToDashboard() {
     const row = document.createElement("tr");
 
     row.innerHTML = `
-      <td class="px-5 py-3">${p.name}</td>
+      <td class="px-5 py-3 ">${p.name}</td>
       <td class="px-3 py-3">${p.ageGender}</td>
       <td class="px-3 py-3">${p.condition}</td>
       <td class="px-3 py-3 ${statusClass}">${status}</td>
@@ -117,27 +123,23 @@ function updateDashboardStats() {
     else if (p.status?.includes("Discharged")) discharged++;
   });
 
-  document.getElementById("bedCount").innerText =
-    `${admitted + critical}/80`;
+
+document.getElementById("bedCount").innerText =
+  `${admitted + critical}/80`;
 }
+//DEPT STATUS
+function getDepartment(doctorName) {
+  if (!doctorName) return "General";
 
-
-
-// DEPARTMENT 
-
-function getDepartment(doctor) {
-  if (!doctor) return "General";
-
-  if (doctor.includes("Priya")) return "Cardiology";
-  if (doctor.includes("Suresh")) return "Neurology";
-  if (doctor.includes("Arul")) return "Orthopedic";
-  if (doctor.includes("Kaviya")) return "Pediatrics";
+  if (doctorName.includes("Priya")) return "General Surgery";
+  if (doctorName.includes("Arjun")) return "Orthopedics";
+  if (doctorName.includes("Kavitha")) return "Pediatrics";
+  if (doctorName.includes("Suresh")) return "Cardiology";
+  if (doctorName.includes("Meena")) return "General Medicine";
+  if (doctorName.includes("Rajan")) return "Neurology";
 
   return "General";
 }
-
-
-// LOAD DEPARTMENT BARS
 
 function loadDepartmentLoad() {
   const patients = JSON.parse(localStorage.getItem("patients")) || [];
@@ -145,14 +147,19 @@ function loadDepartmentLoad() {
 
   container.innerHTML = "";
 
+  if (patients.length === 0) {
+    container.innerHTML = "<p class='text-gray-400 text-sm'>No data available</p>";
+    return;
+  }
+
   let deptCount = {};
 
   patients.forEach(p => {
-    const dept = getDepartment(p.doctor || "");
+    const dept = p.ward || "General"; 
     deptCount[dept] = (deptCount[dept] || 0) + 1;
   });
 
-  const max = Math.max(...Object.values(deptCount), 1);
+  const max = Math.max(...Object.values(deptCount));
 
   for (let dept in deptCount) {
     const count = deptCount[dept];
@@ -173,9 +180,6 @@ function loadDepartmentLoad() {
     container.appendChild(row);
   }
 }
-
-
-// LOAD EVERYTHING
 
 window.onload = function () {
   loadPatientsToDashboard();
