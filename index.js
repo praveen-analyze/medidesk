@@ -9,7 +9,7 @@ menuBar.addEventListener("click", () => {
 
 // Sidebar close
 closeNav.addEventListener("click", () => {
-  sideNav.style.left = "-40%";
+  sideNav.style.left = "-50%";
 });
 
 const formContainer = document.getElementById("formContainer");

@@ -299,7 +299,7 @@ input:focus, select:focus{
   color: #d97706;
 }
 
-/* ================= MOBILE RESPONSIVE ================= */
+/* MOBILE RESPONSIVE */
 @media (max-width: 768px) {
 
   /* Header */
@@ -372,4 +372,19 @@ input:focus, select:focus{
   .cancel, .submit {
     width: 100%;
   }
+}
+
+@media screen and (max-width:700px) {
+    h1{
+        font-size: 12px;
+    }
+    p{
+        font-size:10px
+    }
+    #addPatient{
+        font-size: 10px;
+    }
+
+
+    
 }

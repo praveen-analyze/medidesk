@@ -290,7 +290,7 @@ input:focus, select:focus{
 .status-critical { background:#fee2e2; color:#dc2626; }
 
 
-/* ================= MOBILE RESPONSIVE ================= */
+/* MOBILE RESPONSIVE  */
 @media (max-width: 768px) {
 
   /* Header */
@@ -337,7 +337,7 @@ input:focus, select:focus{
   }
 
   table {
-    min-width: 900px; /* keeps layout same, adds scroll */
+    min-width: 900px; 
   }
 
   /* Modal */
@@ -364,4 +364,19 @@ input:focus, select:focus{
   .submit {
     width: 100%;
   }
+}
+
+@media screen and (max-width:700px) {
+    h1{
+        font-size: 12px;
+    }
+    p{
+        font-size:10px
+    }
+    #addPatient{
+        font-size: 10px;
+    }
+
+
+    
 }
